@@ -18,4 +18,5 @@ jobs:
         with:
           source_branch: 'main'             
           destination_branch: 'gh-pages'    
-          github_token: ${{ secrets.PAT }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
