@@ -1,4 +1,4 @@
-# sidpac-llm-sig
+# Sidpac SIG on LLM Research
 
 Welcome to the **Sidpac Special Interest Group (SIG)** for sharing and discussing research on **Large Language Models (LLMs)**. Meetings are held **every Sunday from 9pm to 10pm**. Locations will be announced in the group.
 
