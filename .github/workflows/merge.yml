@@ -13,10 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Sync branches
-        uses: repo-sync/github-sync@v2
-        with:
-          source_branch: 'main'             
-          destination_branch: 'gh-pages'    
+      - name: Force push main to gh-pages
+        run: |
+          git checkout main
+          git push origin main:gh-pages --force  # 强制将 main 推送到 gh-pages 分支
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
