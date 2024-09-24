@@ -1,4 +1,4 @@
-# Suggested Papers by Research Topic
+# Papers
 
 For each session, the facilitator provides key readings, and participants are encouraged to add their own suggestions under each topic.
 
