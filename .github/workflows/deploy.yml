@@ -3,7 +3,7 @@ name: Deploy GitHub Pages with Jekyll
 on:
   push:
     branches:
-      - main 
+      - gh-pages 
 
 jobs:
   build-deploy:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+        with:
+          ref: gh-pages  
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -22,8 +24,7 @@ jobs:
         run: gem install bundler
 
       - name: Install dependencies
-        run: |
-          bundle install
+        run: bundle install
 
       - name: Build site with Jekyll
         run: bundle exec jekyll build
