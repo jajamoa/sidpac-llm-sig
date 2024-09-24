@@ -13,14 +13,16 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: Set up Ruby for Jekyll (if you are using Jekyll)
+      - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2' 
+          ruby-version: '3.0'
+
+      - name: Install Bundler
+        run: gem install bundler
 
       - name: Install dependencies
         run: |
-          gem install bundler
           bundle install
 
       - name: Build site with Jekyll
@@ -29,5 +31,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  
-          publish_dir: ./_site 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
