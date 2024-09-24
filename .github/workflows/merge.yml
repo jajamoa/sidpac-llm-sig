@@ -1,9 +1,9 @@
-name: Auto Merge Main to Gh-pages
+name: Auto Force Merge Main to Gh-pages
 
 on:
   push:
     branches:
-      - main 
+      - main  
 
 jobs:
   auto-merge:
@@ -13,16 +13,16 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v2
         with:
-          ref: main 
+          ref: main  
 
       - name: Checkout gh-pages branch
         run: |
           git fetch origin gh-pages
-          git checkout gh-pages  # 切换到 gh-pages 分支
-          git merge main --no-ff --no-edit  # 合并 main 到 gh-pages
+          git checkout gh-pages  
+          git merge main --allow-unrelated-histories --no-ff --no-edit  
 
-      - name: Push changes to gh-pages
+      - name: Force push changes to gh-pages
         run: |
-          git push --force origin gh-pages  # 推送合并后的 gh-pages 分支
+          git push --force origin gh-pages  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
