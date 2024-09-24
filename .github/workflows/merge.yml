@@ -23,6 +23,6 @@ jobs:
 
       - name: Push changes to gh-pages
         run: |
-          git push origin gh-pages  # 推送合并后的 gh-pages 分支
+          git push --force origin gh-pages  # 推送合并后的 gh-pages 分支
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
