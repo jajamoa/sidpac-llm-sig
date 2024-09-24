@@ -3,7 +3,7 @@ name: Auto Force Merge Main to Gh-pages
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   auto-merge:
@@ -13,16 +13,24 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v2
         with:
-          ref: main  
+          ref: main
 
       - name: Checkout gh-pages branch
         run: |
           git fetch origin gh-pages
-          git checkout gh-pages  
-          git merge main --allow-unrelated-histories --no-ff --no-edit  
+          git checkout gh-pages
+
+      - name: Configure Git identity
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: Merge main into gh-pages
+        run: |
+          git merge main --allow-unrelated-histories --no-ff --no-edit
 
       - name: Force push changes to gh-pages
         run: |
-          git push --force origin gh-pages  
+          git push --force origin gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
